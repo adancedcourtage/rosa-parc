@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useMemo, useState } from "react";
 import IMPORTED from "./data/catalogue.json";
+import PRICES_MA from "./data/prix-maroc.json";
 
 /* Données et utilitaires partagés par les maquettes 2 et 3. */
 
@@ -148,8 +149,17 @@ export function buildContactMessage(f) {
 }
 
 /* Catalogue complet = sélection de départ + collections importées des boutiques des marques
-   (src/data/catalogue.json : prix indicatifs calibrés, notes extraites des fiches officielles). */
-export const PRODUCTS = [...CORE_PRODUCTS, ...IMPORTED];
+   (src/data/catalogue.json : notes extraites des fiches officielles).
+   Prix en dirhams (src/data/prix-maroc.json) : prix public relevé sur sirina.ma quand le produit
+   y est vendu dans la même contenance (avec son prix barré éventuel), sinon estimation recalée
+   par marque sur ces prix marocains (`priceEstimate: true`). */
+const withMoroccanPrice = (p) => {
+  const m = PRICES_MA[p.id];
+  if (!m) return p;
+  const { oldPrice, ...rest } = p;
+  return { ...rest, price: m.price, ...(m.oldPrice ? { oldPrice: m.oldPrice } : {}), priceEstimate: !!m.estimate, priceSource: m.source };
+};
+export const PRODUCTS = [...CORE_PRODUCTS, ...IMPORTED].map(withMoroccanPrice);
 
 export const SORTS = [
   { id: "popularity", label: "Popularité", fn: (a, b) => b.popularity - a.popularity },

@@ -134,6 +134,9 @@ function TiltBottle({ p, className = "" }) {
 function HeroBento({ onQuiz, onNav, onAdd }) {
   const star = PRODUCTS.find((p) => p.id === 4);
   const deo = PRODUCTS.find((p) => p.id === 14);
+  const deoFrom = Math.min(...PRODUCTS.filter((p) => p.category === "deodorant").map((p) => p.price));
+  const offers = PRODUCTS.filter((p) => p.oldPrice).sort((a, b) => b.popularity - a.popularity);
+  const maxDiscount = Math.max(0, ...offers.map(discountOf));
   const spot = useSpotlight();
   return (
     <section id="a-accueil" className="mx-auto max-w-7xl scroll-mt-24 px-4 pb-10 pt-6 sm:px-6">
@@ -185,7 +188,7 @@ function HeroBento({ onQuiz, onNav, onAdd }) {
         <Tile as="button" delay={0.3} onClick={() => onNav(navItem("Déodorants"))} className="flex items-end justify-between bg-[#FCE4EC] p-5">
           <div>
             <p className="text-[10px] uppercase tracking-[.3em] text-[#2A1625]/60">Déodorants</p>
-            <p className="font-display text-2xl leading-tight text-[#2A1625]">dès 35 DH</p>
+            <p className="font-display text-2xl leading-tight text-[#2A1625]">dès {fmt(deoFrom)}</p>
           </div>
           <div className="h-24 transition-transform duration-500 group-hover:-rotate-12 group-hover:scale-110"><ProductVisual p={deo} className="h-full w-auto" /></div>
         </Tile>
@@ -193,8 +196,8 @@ function HeroBento({ onQuiz, onNav, onAdd }) {
         <Tile as="button" delay={0.4} onClick={() => onNav(navItem("Offres"))} className="col-span-2 flex items-center justify-between bg-white p-5 ring-1 ring-[#E8C5C8]">
           <div>
             <p className="text-[10px] uppercase tracking-[.3em] text-[#C59B27]">Offres du moment</p>
-            <p className="font-display text-3xl text-[#2A1625]">Jusqu'à -22%</p>
-            <p className="text-xs text-[#2A1625]/60">Khamrah, 9PM, Sharaf Blend…</p>
+            <p className="font-display text-3xl text-[#2A1625]">Jusqu'à -{maxDiscount}%</p>
+            <p className="text-xs text-[#2A1625]/60">{offers.length} produits en promo · {offers.slice(0, 3).map((p) => p.name).join(", ")}…</p>
           </div>
           <motion.span animate={{ rotate: 360 }} transition={{ duration: 18, repeat: Infinity, ease: "linear" }} className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-dashed border-[#C59B27] text-[#C59B27]">
             <Percent className="h-7 w-7" />
