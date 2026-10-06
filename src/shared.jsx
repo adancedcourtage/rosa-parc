@@ -150,13 +150,16 @@ export function buildContactMessage(f) {
 
 /* Catalogue complet = sélection de départ + collections importées des boutiques des marques
    (src/data/catalogue.json : notes extraites des fiches officielles).
-   Prix en dirhams (src/data/prix-maroc.json) : prix public relevé sur sirina.ma quand le produit
-   y est vendu dans la même contenance (avec son prix barré éventuel), sinon estimation recalée
+   Prix en dirhams (src/data/prix-maroc.json) : prix public relevé sur sirina.ma quand le même
+   produit (même nom, même version homme/femme, même contenance) y est vendu, avec son prix
+   barré éventuel ; sinon estimation recalée
    par marque sur ces prix marocains (`priceEstimate: true`). */
 const withMoroccanPrice = (p) => {
   const m = PRICES_MA[p.id];
   if (!m) return p;
   const { oldPrice, ...rest } = p;
+  // Homme/Femme contradictoire : on suit sirina.ma ; un parfum mixte le reste.
+  if (m.gender && m.gender !== "m" && p.gender !== "m") rest.gender = m.gender;
   return { ...rest, price: m.price, ...(m.oldPrice ? { oldPrice: m.oldPrice } : {}), priceEstimate: !!m.estimate, priceSource: m.source };
 };
 export const PRODUCTS = [...CORE_PRODUCTS, ...IMPORTED].map(withMoroccanPrice);

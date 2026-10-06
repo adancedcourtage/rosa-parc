@@ -1,6 +1,11 @@
 import json, html, re, unicodedata, sys, collections
 S = sys.argv[1]
-sir = json.load(open(f"{S}/all.json")); ours = json.load(open(f"{S}/ours.json"))
+sir = json.load(open(f"{S}/all.json")); ours = json.load(open(f"{S}/ours_full.json"))
+FEM = re.compile(r"\b(women|woman|femme|her|lady|pour elle)\b", re.I); MASC = re.compile(r"\b(men|man|homme|him|pour lui|uomo)\b", re.I)
+def explicit_gender(name):
+    f, m = bool(FEM.search(name)), bool(MASC.search(name))
+    return "f" if f and not m else "h" if m and not f else None
+POUR = {"Homme": "h", "Femme": "f", "Mixte": "m", "Unisexe": "m"}
 BRAND = {"Maison Alhambra": "Alhambra", "Asrar": "Maison Asrar", "Cyrus": "Paris Bleu", "Sistelle": "Sistelle Paris", "Johan B": "Geparlys", "Gemina B": "Geparlys"}
 GROUP = {"French Avenue": "FW", "Fragrance World": "FW", "Paris Bleu": "PB", "Sistelle Paris": "PB"}
 OUR_BRANDS = {p["brand"] for p in ours}
@@ -26,15 +31,17 @@ for p in sir:
     base = re.sub(r"[–-]\s*$|^\s*[–-]", " ", base.strip())
     pr = p["prices"]; price = int(pr["price"]) // 100; reg = int(pr["regular_price"] or 0) // 100
     if price <= 0: skipped["sans prix"] += 1; continue
-    idx[(GROUP.get(brand, brand), norm(base))].append({"price": price, "reg": reg, "ml": ml(" ".join(attrs.get("Taille", [])) or name), "deo": bool(DEO.search(name + " " + cats)), "url": p["permalink"], "name": name, "stock": p["is_in_stock"]})
+    idx[(GROUP.get(brand, brand), norm(base))].append({"price": price, "reg": reg, "ml": ml(" ".join(attrs.get("Taille", [])) or name), "deo": bool(DEO.search(name + " " + cats)), "url": p["permalink"], "name": name, "stock": p["is_in_stock"], "eg": explicit_gender(name), "pour": [POUR[x] for x in attrs.get("Pour", []) if x in POUR]})
 out = {}; unmatched = []
 for o in ours:
     cands = idx.get((GROUP.get(o["brand"], o["brand"]), norm(o["name"])), [])
     odeo = o["category"] == "deodorant"; oml = ml(o["volume"])
+    oeg = explicit_gender(o["name"])
+    cands = [c for c in cands if not (c["eg"] and c["eg"] != o["gender"]) and not (oeg and c["pour"] and oeg not in c["pour"])]
     cands = [c for c in cands if c["deo"] == odeo and (c["ml"] is None or oml is None or abs(c["ml"] - oml) <= 6)]
     if not cands: continue
     c = min(cands, key=lambda c: c["price"])
-    out[o["id"]] = {"price": c["price"], **({"oldPrice": c["reg"]} if c["reg"] > c["price"] else {}), "url": c["url"]}
+    out[o["id"]] = {"price": c["price"], **({"oldPrice": c["reg"]} if c["reg"] > c["price"] else {}), "url": c["url"], **({"gender": c["pour"][0]} if len(c["pour"]) == 1 else {"gender": "m"} if len(c["pour"]) > 1 else {})}
 print("index sirina (marques communes):", sum(len(v) for v in idx.values()), dict(skipped))
 print("produits appariés:", len(out), "/", len(ours))
 by = collections.Counter(o["brand"] for o in ours if o["id"] in out); print(by.most_common())
