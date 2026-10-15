@@ -11,7 +11,7 @@ export const FREE_SHIPPING_FROM = 500;
 export const SHIPPING_FEE = 35;
 
 export const BRANDS = [
-  "Afnan", "Alhambra", "Armaf", "Asdaaf", "Fragrance World", "Franck Olivier",
+  "Afnan", "Alhambra", "Armaf", "Asdaaf", "Brand Collection", "Fragrance World", "Franck Olivier",
   "French Avenue", "Geparlys", "La Rive", "Lattafa", "Maison Asrar", "Paris Bleu",
   "Rasasi", "Rayhaan", "Riiffs", "Rue Broca", "Sistelle Paris", "Zimaya",
 ];
@@ -153,7 +153,8 @@ export function buildContactMessage(f) {
    Prix en dirhams (src/data/prix-maroc.json) : prix public relevé sur sirina.ma quand le même
    produit (même nom, même version homme/femme, même contenance) y est vendu, avec son prix
    barré éventuel ; sinon estimation recalée
-   par marque sur ces prix marocains (`priceEstimate: true`). */
+   par marque sur ces prix marocains (`priceEstimate: true`). Brand Collection : prix publics
+   du grossiste officiel brand-collection.ma (scripts/catalogue/brand_collection.py). */
 const withMoroccanPrice = (p) => {
   const m = PRICES_MA[p.id];
   if (!m) return p;
@@ -188,7 +189,7 @@ export const flushPendingSection = () => {
   pendingSection = null;
   target?.scrollIntoView({ behavior: "smooth", block: "start" });
 };
-export const searchable = (p) => `${p.brand} ${p.name} ${p.family} ${Object.values(p.notes).join(" ")}`.toLowerCase();
+export const searchable = (p) => `${p.brand} ${p.name} ${p.inspiration || ""} ${p.family} ${Object.values(p.notes).join(" ")}`.toLowerCase();
 export const discountOf = (p) => (p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0);
 export const quickOrderLink = (p) =>
   waLink(`Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite commander :\n• ${p.brand} ${p.name} (${p.volume}) — ${fmt(p.price)}\n\nMerci de me confirmer la disponibilité.`);
@@ -372,7 +373,8 @@ export const hasNotes = (p) => !!(p.notes && (p.notes.top || p.notes.heart || p.
 export const describeProduct = (p) => {
   const kind = p.category === "parfum" ? "un parfum" : "un déodorant";
   const lc = (t) => t.toLowerCase();
-  const intro = `${p.brand} ${p.name} est ${kind} ${FOR_GENDER[p.gender]} de la famille ${lc(p.family)}.`;
+  const intro = `${p.brand} ${p.name} est ${kind} ${FOR_GENDER[p.gender]} de la famille ${lc(p.family)}` +
+    (p.inspiration ? `, inspiré de ${p.inspiration}.` : ".");
   if (!hasNotes(p)) return `${intro} La marque ne publie pas sa pyramide olfactive détaillée : demandez-nous conseil sur WhatsApp.`;
   const parts = [];
   if (p.notes.top) parts.push(`s'ouvre sur des notes de ${lc(p.notes.top)}`);

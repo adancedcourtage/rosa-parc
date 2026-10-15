@@ -423,6 +423,7 @@ const FlipCard = React.forwardRef(function FlipCard({ p, onAdd, index = 0 }, ref
         <div className="min-w-0">
           <p className="truncate text-[10px] uppercase tracking-[.2em] text-[#C59B27]">{p.brand}</p>
           <h3 className="font-display truncate text-lg leading-tight text-[#2A1625] sm:text-xl"><button onClick={() => goTo(productRoute(p.id))} className="max-w-full truncate text-left transition hover:text-[#C59B27]">{p.name}</button></h3>
+          {p.inspiration && <p className="truncate text-xs text-[#2A1625]/55">Inspiré de {p.inspiration}</p>}
           <p className="mt-0.5 flex items-center gap-2 text-sm text-[#2A1625]">
             <b className="font-semibold">{fmt(p.price)}</b>
             {p.oldPrice && <s className="text-xs text-[#2A1625]/40">{fmt(p.oldPrice)}</s>}
@@ -1046,6 +1047,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
           <Tile delay={0.1} className="flex flex-col bg-white p-6 ring-1 ring-[#E8C5C8] sm:p-8">
             <p className="text-xs font-semibold uppercase tracking-[.3em] text-[#C59B27]">{p.brand}</p>
             <h1 className="font-display mt-2 text-5xl leading-none text-[#2A1625] sm:text-6xl">{p.name}</h1>
+            {p.inspiration && <p className="mt-2 text-sm text-[#2A1625]/70">Inspiré de <span className="font-semibold text-[#2A1625]">{p.inspiration}</span></p>}
             <p className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[#2A1625]/60">
               {p.rating && <><span className="inline-flex items-center gap-1"><Star className="h-4 w-4 fill-[#D4AF37] text-[#D4AF37]" /> {p.rating.toFixed(1)}/5</span><span>·</span></>}
               <span>{p.family}</span><span>·</span><span>{p.category === "parfum" ? "Parfum" : "Déodorant"}</span>
