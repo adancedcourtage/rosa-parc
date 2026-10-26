@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import {
   BRANDS, PRODUCTS, SORTS, MOODS, FREE_SHIPPING_FROM, SHIPPING_FEE, WHATSAPP_DISPLAY, WHATSAPP_NUMBER, INSTAGRAM_URL,
-  fmt, waLink, scrollToId, searchable, discountOf, quickOrderLink, useCart, buildOrderMessage,
+  fmt, waLink, orderLabel, scrollToId, searchable, discountOf, quickOrderLink, useCart, buildOrderMessage,
   Bottle, ProductVisual, photoOf, WhatsAppIcon, BaseStyles, GENDER_PAGES, GENDER_LABEL, SITE_NAV, HOURS, CONTACT_SUBJECTS, DELIVERY_CITIES,
   useHashRoute, goTo, useGenderProducts, useContactForm, flushPendingSection,
   productRoute, productIdFromRoute, profileOf, describeProduct, relatedTo, hasNotes,
@@ -393,6 +393,7 @@ const FlipCard = React.forwardRef(function FlipCard({ p, onAdd, index = 0 }, ref
           <div className="absolute inset-0 overflow-hidden rounded-[24px]" style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", background: photoOf(p) ? "#FFFFFF" : `linear-gradient(170deg, #FFFFFF, ${p.colors[1]}33)` }}>
             {d > 0 && <span className="absolute left-3 top-3 rounded-full bg-[#C59B27] px-2 py-0.5 text-[10px] font-bold text-white">-{d}%</span>}
             {p.bestseller && <span className="absolute right-3 top-3 rounded-full bg-white/80 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#2A1625]">Best</span>}
+            {p.onRequest && <span className={`absolute right-3 ${p.bestseller ? "top-9" : "top-3"} rounded-full bg-[#2A1625] px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-[#F3D98B]`}>Sur commande</span>}
             <div className="absolute inset-0 grid place-items-center p-8"><ProductVisual p={p} className="h-full max-h-52 w-auto drop-shadow-[0_20px_20px_rgba(42,22,37,.2)]" /></div>
             <span className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white/80 px-3 py-1 text-[10px] text-[#2A1625]/60 backdrop-blur-md">Notes au verso ↻</span>
           </div>
@@ -413,7 +414,7 @@ const FlipCard = React.forwardRef(function FlipCard({ p, onAdd, index = 0 }, ref
                 <Eye className="h-4 w-4" /> Voir la fiche
               </button>
               <a href={quickOrderLink(p)} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center justify-center gap-1.5 rounded-full bg-[#25D366] py-2.5 text-xs font-semibold">
-                <WhatsAppIcon className="h-4 w-4" /> Commander
+                <WhatsAppIcon className="h-4 w-4" /> {orderLabel(p)}
               </a>
             </div>
           </div>
@@ -1007,7 +1008,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
   const related = relatedTo(p);
   const genderPage = { h: "homme", f: "femme", m: "mixte" }[p.gender];
   const add = () => { onAdd(p, qty); setAdded(true); setTimeout(() => setAdded(false), 1800); };
-  const orderLink = waLink(`Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite commander :\n• ${qty} × ${p.brand} ${p.name} (${p.volume}) — ${fmt(p.price * qty)}\n\nMerci de me confirmer la disponibilité.`);
+  const orderLink = waLink(`Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite commander${p.onRequest ? " sur demande (produit « Sur commande »)" : ""} :\n• ${qty} × ${p.brand} ${p.name} (${p.volume}) — ${fmt(p.price * qty)}\n\nMerci de me confirmer la disponibilité${p.onRequest ? " et le délai" : ""}.`);
   const tiers = [
     ["Notes de tête", "Les premières minutes", p.notes.top, "w-1/2"],
     ["Notes de cœur", "Les premières heures", p.notes.heart, "w-3/4"],
@@ -1026,6 +1027,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
             <div className="relative flex gap-2">
               {d > 0 && <span className="rounded-full bg-[#C59B27] px-3 py-1 text-xs font-bold text-white">-{d}%</span>}
               {p.bestseller && <span className="rounded-full bg-[#2A1625] px-3 py-1 text-[10px] font-semibold uppercase tracking-[.2em] text-[#F3D98B]">Bestseller</span>}
+              {p.onRequest && <span className="rounded-full bg-[#2A1625] px-3 py-1 text-[10px] font-semibold uppercase tracking-[.2em] text-[#F3D98B]">Sur commande</span>}
               <span className="ml-auto rounded-full bg-white/80 px-3 py-1 text-xs text-[#2A1625]">{GENDER_LABEL[p.gender]}</span>
             </div>
             <AnimatePresence mode="wait">
@@ -1076,7 +1078,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
               </motion.button>
             </div>
             <a href={orderLink} target="_blank" rel="noreferrer" className="shimmer mt-2 flex h-12 items-center justify-center gap-2 rounded-full bg-[#25D366] text-sm font-semibold text-white">
-              <WhatsAppIcon className="h-4 w-4" /> Commander directement via WhatsApp
+              <WhatsAppIcon className="h-4 w-4" /> {p.onRequest ? "Commander sur demande via WhatsApp" : "Commander directement via WhatsApp"}
             </a>
             <AnimatePresence>
               {cartCount > 0 && (
@@ -1161,7 +1163,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
           <p className="truncate text-xs text-white/60">{p.brand} {p.name}</p>
           <p className="font-semibold">{fmt(p.price * qty)}</p>
         </div>
-        <a href={orderLink} target="_blank" rel="noreferrer" className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#25D366]" aria-label="Commander via WhatsApp"><WhatsAppIcon className="h-5 w-5" /></a>
+        <a href={orderLink} target="_blank" rel="noreferrer" className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#25D366]" aria-label={`${orderLabel(p)} via WhatsApp`}><WhatsAppIcon className="h-5 w-5" /></a>
         <motion.button whileTap={{ scale: 0.95 }} onClick={add} className={`h-11 shrink-0 rounded-full px-5 text-sm font-semibold ${added ? "bg-[#C59B27] text-white" : "bg-[#F3D98B] text-[#2A1625]"}`}>
           {added ? "Ajouté ✓" : "Ajouter"}
         </motion.button>

@@ -26,61 +26,61 @@ export const MOODS = {
 /* Sélection de départ (fiches enrichies à la main). Prix indicatifs en MAD.
    mood = famille simplifiée, gender = h / f / m (mixte). */
 export const CORE_PRODUCTS = [
-  { id: 1, brand: "Lattafa", name: "Khamrah", category: "parfum", volume: "100 ml EDP", price: 450, oldPrice: 520, rating: 4.9, popularity: 98, family: "Oriental gourmand", mood: "gourmand", gender: "m", shape: "classic", colors: ["#7A2E1F", "#D98C4A"], bestseller: true,
+  { id: 1, brand: "Lattafa", name: "Khamrah", category: "parfum", volume: "100 ml EDP", price: 260, rating: 4.9, popularity: 98, family: "Oriental gourmand", mood: "gourmand", gender: "m", shape: "classic", colors: ["#7A2E1F", "#D98C4A"], bestseller: true,
     notes: { top: "Cannelle, Muscade, Bergamote", heart: "Dattes, Praline, Tubéreuse", base: "Vanille, Fève Tonka, Benjoin" } },
-  { id: 2, brand: "Armaf", name: "Club de Nuit Intense Man", category: "parfum", volume: "105 ml EDT", price: 520, rating: 4.8, popularity: 96, family: "Boisé fruité", mood: "frais", gender: "h", shape: "tall", colors: ["#111111", "#3D3D3D"], bestseller: true,
+  { id: 2, brand: "Armaf", name: "Club de Nuit Intense Man", category: "parfum", volume: "105 ml EDT", price: 370, rating: 4.8, popularity: 96, family: "Boisé fruité", mood: "frais", gender: "h", shape: "tall", colors: ["#111111", "#3D3D3D"], bestseller: true,
     notes: { top: "Citron, Ananas, Cassis", heart: "Bouleau, Jasmin, Rose", base: "Musc, Ambre gris, Patchouli" } },
-  { id: 3, brand: "French Avenue", name: "Royal Blend", category: "parfum", volume: "100 ml EDP", price: 480, rating: 4.7, popularity: 88, family: "Ambré épicé", mood: "boise", gender: "m", shape: "square", colors: ["#1E2A5A", "#C59B27"], bestseller: true,
+  { id: 3, onRequest: true, brand: "French Avenue", name: "Royal Blend", category: "parfum", volume: "100 ml EDP", price: 480, rating: 4.7, popularity: 88, family: "Ambré épicé", mood: "boise", gender: "m", shape: "square", colors: ["#1E2A5A", "#C59B27"], bestseller: true,
     notes: { top: "Safran, Poivre rose", heart: "Rose de Taïf, Oud", base: "Ambre, Vanille, Bois de santal" } },
-  { id: 4, brand: "Afnan", name: "9PM", category: "parfum", volume: "100 ml EDP", price: 420, oldPrice: 480, rating: 4.8, popularity: 94, family: "Oriental vanillé", mood: "gourmand", gender: "h", shape: "tall", colors: ["#0E0E12", "#6B3FA0"], bestseller: true,
+  { id: 4, brand: "Afnan", name: "9PM", category: "parfum", volume: "100 ml EDP", price: 530, rating: 4.8, popularity: 94, family: "Oriental vanillé", mood: "gourmand", gender: "h", shape: "tall", colors: ["#0E0E12", "#6B3FA0"], bestseller: true,
     notes: { top: "Pomme, Cannelle, Lavande", heart: "Fleur d'oranger, Muguet", base: "Vanille, Fève Tonka, Ambre" } },
-  { id: 5, brand: "Lattafa", name: "Asad", category: "parfum", volume: "100 ml EDP", price: 350, rating: 4.6, popularity: 90, family: "Ambré boisé", mood: "gourmand", gender: "h", shape: "classic", colors: ["#1B1B1B", "#B8862B"],
+  { id: 5, brand: "Lattafa", name: "Asad", category: "parfum", volume: "100 ml EDP", price: 180, rating: 4.6, popularity: 90, family: "Ambré boisé", mood: "gourmand", gender: "h", shape: "classic", colors: ["#1B1B1B", "#B8862B"],
     notes: { top: "Poivre noir, Tabac, Ananas", heart: "Café, Iris, Patchouli", base: "Vanille, Ambre, Benjoin" } },
-  { id: 6, brand: "Rasasi", name: "Hawas for Him", category: "parfum", volume: "100 ml EDP", price: 650, rating: 4.7, popularity: 85, family: "Aquatique fruité", mood: "frais", gender: "h", shape: "round", colors: ["#2C6E91", "#9ED6E8"],
+  { id: 6, onRequest: true, brand: "Rasasi", name: "Hawas for Him", category: "parfum", volume: "100 ml EDP", price: 650, rating: 4.7, popularity: 85, family: "Aquatique fruité", mood: "frais", gender: "h", shape: "round", colors: ["#2C6E91", "#9ED6E8"],
     notes: { top: "Pomme, Bergamote, Citron, Cannelle", heart: "Fleur d'oranger, Cardamome, Prune", base: "Patchouli, Ambre gris, Bois flotté, Musc" } },
-  { id: 7, brand: "Alhambra", name: "Philos Pura", category: "parfum", volume: "100 ml EDP", price: 290, rating: 4.4, popularity: 76, family: "Aromatique fruité", mood: "frais", gender: "m", shape: "square", colors: ["#3A3A3A", "#BFBFBF"],
+  { id: 7, onRequest: true, brand: "Alhambra", name: "Philos Pura", category: "parfum", volume: "100 ml EDP", price: 290, rating: 4.4, popularity: 76, family: "Aromatique fruité", mood: "frais", gender: "m", shape: "square", colors: ["#3A3A3A", "#BFBFBF"],
     notes: { top: "Orange, Bergamote, Citron", heart: "Notes fruitées", base: "Musc blanc, Vanille de Madagascar, Ambre" } },
-  { id: 8, brand: "Maison Asrar", name: "Gentle Oud", category: "parfum", volume: "80 ml EDP", price: 350, rating: 4.5, popularity: 72, family: "Oud boisé cuiré", mood: "boise", gender: "h", shape: "round", colors: ["#3B1E12", "#A5652E"],
+  { id: 8, onRequest: true, brand: "Maison Asrar", name: "Gentle Oud", category: "parfum", volume: "80 ml EDP", price: 350, rating: 4.5, popularity: 72, family: "Oud boisé cuiré", mood: "boise", gender: "h", shape: "round", colors: ["#3B1E12", "#A5652E"],
     notes: { top: "Lavande, Accord épicé", heart: "Notes florales, Bois, Oud", base: "Cuir, Ambre" } },
-  { id: 9, brand: "Zimaya", name: "Sharaf Blend", category: "parfum", volume: "100 ml EDP", price: 430, oldPrice: 490, rating: 4.6, popularity: 80, family: "Oriental ambré", mood: "boise", gender: "m", shape: "classic", colors: ["#E8C5C8", "#C59B27"],
+  { id: 9, brand: "Zimaya", name: "Sharaf Blend", category: "parfum", volume: "100 ml EDP", price: 290, rating: 4.6, popularity: 80, family: "Oriental ambré", mood: "boise", gender: "m", shape: "classic", colors: ["#E8C5C8", "#C59B27"],
     notes: { top: "Bergamote, Safran", heart: "Rose, Jasmin, Oud", base: "Ambre, Vanille, Musc blanc" } },
-  { id: 10, brand: "Fragrance World", name: "Barakkat Rouge 540", category: "parfum", volume: "100 ml EDP", price: 320, rating: 4.5, popularity: 92, family: "Ambré floral", mood: "floral", gender: "m", shape: "classic", colors: ["#B3122B", "#F2A5A5"], bestseller: true,
+  { id: 10, onRequest: true, brand: "Fragrance World", name: "Barakkat Rouge 540", category: "parfum", volume: "100 ml EDP", price: 320, rating: 4.5, popularity: 92, family: "Ambré floral", mood: "floral", gender: "m", shape: "classic", colors: ["#B3122B", "#F2A5A5"], bestseller: true,
     notes: { top: "Safran, Amande amère", heart: "Jasmin d'Égypte, Cèdre", base: "Ambre gris, Musc, Notes boisées" } },
-  { id: 11, brand: "Asdaaf", name: "Ameerat Al Arab", category: "parfum", volume: "100 ml EDP", price: 260, rating: 4.5, popularity: 78, family: "Floral oriental", mood: "floral", gender: "m", shape: "round", colors: ["#F4A9B8", "#FFE1E8"],
+  { id: 11, brand: "Asdaaf", name: "Ameerat Al Arab", category: "parfum", volume: "100 ml EDP", price: 150, rating: 4.5, popularity: 78, family: "Floral oriental", mood: "floral", gender: "m", shape: "round", colors: ["#F4A9B8", "#FFE1E8"],
     notes: { top: "Agrumes, Bergamote", heart: "Musc blanc, Aloe vera", base: "Jasmin, Bois, Musc, Oud" } },
-  { id: 12, brand: "Rue Broca", name: "Théorème Pour Homme", category: "parfum", volume: "90 ml EDP", price: 280, rating: 4.4, popularity: 70, family: "Ambré boisé", mood: "boise", gender: "h", shape: "tall", colors: ["#2A1625", "#7C5A44"],
+  { id: 12, brand: "Rue Broca", name: "Théorème Pour Homme", category: "parfum", volume: "90 ml EDP", price: 250, rating: 4.4, popularity: 70, family: "Ambré boisé", mood: "boise", gender: "h", shape: "tall", colors: ["#2A1625", "#7C5A44"],
     notes: { top: "Agrumes", heart: "Ambre, Bois", base: "Musc, Patchouli" } },
-  { id: 13, brand: "Rayhaan", name: "Elixir", category: "parfum", volume: "100 ml EDP", price: 310, rating: 4.3, popularity: 66, family: "Frais fruité", mood: "frais", gender: "m", shape: "square", colors: ["#0F5C4D", "#7FD1B9"],
+  { id: 13, onRequest: true, brand: "Rayhaan", name: "Elixir", category: "parfum", volume: "100 ml EDP", price: 310, rating: 4.3, popularity: 66, family: "Frais fruité", mood: "frais", gender: "m", shape: "square", colors: ["#0F5C4D", "#7FD1B9"],
     notes: { top: "Ananas, Citron vert", heart: "Bouleau, Jasmin", base: "Musc, Ambre gris" } },
-  { id: 14, brand: "Lattafa", name: "Yara All Over Spray", category: "deodorant", volume: "200 ml", price: 75, rating: 4.8, popularity: 95, family: "Gourmand poudré", mood: "gourmand", gender: "f", shape: "deo", colors: ["#F2B8C6", "#FCE4EC"], bestseller: true,
+  { id: 14, onRequest: true, brand: "Lattafa", name: "Yara All Over Spray", category: "deodorant", volume: "200 ml", price: 75, rating: 4.8, popularity: 95, family: "Gourmand poudré", mood: "gourmand", gender: "f", shape: "deo", colors: ["#F2B8C6", "#FCE4EC"], bestseller: true,
     notes: { top: "Orchidée, Héliotrope", heart: "Mandarine, Accord gourmand", base: "Vanille, Musc, Santal" } },
-  { id: 15, brand: "Armaf", name: "Club de Nuit Intense Man Body Spray", category: "deodorant", volume: "200 ml", price: 85, rating: 4.6, popularity: 84, family: "Boisé fruité", mood: "frais", gender: "h", shape: "deo", colors: ["#121212", "#4A4A4A"],
+  { id: 15, onRequest: true, brand: "Armaf", name: "Club de Nuit Intense Man Body Spray", category: "deodorant", volume: "200 ml", price: 85, rating: 4.6, popularity: 84, family: "Boisé fruité", mood: "frais", gender: "h", shape: "deo", colors: ["#121212", "#4A4A4A"],
     notes: { top: "Citron, Ananas", heart: "Bouleau, Rose", base: "Musc, Ambre gris" } },
-  { id: 16, brand: "Franck Olivier", name: "Sun Java for Men", category: "parfum", volume: "75 ml EDT", price: 160, oldPrice: 190, rating: 4.4, popularity: 70, family: "Aromatique fougère", mood: "frais", gender: "h", shape: "tall", colors: ["#0B3D91", "#5AA0E6"],
+  { id: 16, onRequest: true, brand: "Franck Olivier", name: "Sun Java for Men", category: "parfum", volume: "75 ml EDT", price: 160, oldPrice: 190, rating: 4.4, popularity: 70, family: "Aromatique fougère", mood: "frais", gender: "h", shape: "tall", colors: ["#0B3D91", "#5AA0E6"],
     notes: { top: "Orange, Mandarine, Menthe, Bergamote", heart: "Pastèque, Géranium", base: "Vanille, Ambre, Musc, Palissandre" } },
-  { id: 17, brand: "Sistelle Paris", name: "Secret de Sistelle", category: "parfum", volume: "85 ml EDP", price: 190, rating: 4.4, popularity: 66, family: "Oriental gourmand fruité", mood: "gourmand", gender: "f", shape: "round", colors: ["#8E2B4F", "#E8C5C8"],
+  { id: 17, onRequest: true, brand: "Sistelle Paris", name: "Secret de Sistelle", category: "parfum", volume: "85 ml EDP", price: 190, rating: 4.4, popularity: 66, family: "Oriental gourmand fruité", mood: "gourmand", gender: "f", shape: "round", colors: ["#8E2B4F", "#E8C5C8"],
     notes: { top: "Bergamote, Cassis, Freesia", heart: "Rose, Jasmin, Noisette", base: "Bois ambrés, Vétiver, Vanille" } },
-  { id: 18, brand: "Paris Bleu", name: "Chairman Legacy", category: "parfum", volume: "100 ml EDP", price: 170, rating: 4.3, popularity: 63, family: "Boisé aromatique", mood: "boise", gender: "h", shape: "square", colors: ["#1D2B4F", "#9CC3E6"],
+  { id: 18, onRequest: true, brand: "Paris Bleu", name: "Chairman Legacy", category: "parfum", volume: "100 ml EDP", price: 170, rating: 4.3, popularity: 63, family: "Boisé aromatique", mood: "boise", gender: "h", shape: "square", colors: ["#1D2B4F", "#9CC3E6"],
     notes: { top: "Bergamote, Géranium, Lavande, Ananas", heart: "Iris, Jasmin", base: "Ambre, Fève tonka, Vanille, Labdanum, Baume du Pérou" } },
-  { id: 19, brand: "Geparlys", name: "Bois Noir", category: "parfum", volume: "100 ml EDP", price: 260, rating: 4.4, popularity: 65, family: "Boisé ambré fumé", mood: "boise", gender: "h", shape: "tall", colors: ["#1A1A1A", "#7C5A44"],
+  { id: 19, brand: "Geparlys", name: "Bois Noir", category: "parfum", volume: "100 ml EDP", price: 250, rating: 4.4, popularity: 65, family: "Boisé ambré fumé", mood: "boise", gender: "h", shape: "tall", colors: ["#1A1A1A", "#7C5A44"],
     notes: { top: "Accord feu de bois", heart: "Cèdre fumé", base: "Ambre, Vanille" } },
-  { id: 20, brand: "Riiffs", name: "Seasons Rise", category: "parfum", volume: "100 ml EDP", price: 320, rating: 4.6, popularity: 74, family: "Floral gourmand", mood: "gourmand", gender: "m", shape: "classic", colors: ["#C46A1C", "#F3D98B"],
+  { id: 20, onRequest: true, brand: "Riiffs", name: "Seasons Rise", category: "parfum", volume: "100 ml EDP", price: 320, rating: 4.6, popularity: 74, family: "Floral gourmand", mood: "gourmand", gender: "m", shape: "classic", colors: ["#C46A1C", "#F3D98B"],
     notes: { top: "Fleur d'oranger, Poivre rose, Muscade, Racine d'iris", heart: "Sauge sclarée, Cannelle, Caramel, Toffee", base: "Vanille, Bois de cachemire, Ambroxan, Praline, Ambre" } },
-  { id: 21, brand: "La Rive", name: "Cabana Déodorant", category: "deodorant", volume: "150 ml", price: 35, oldPrice: 45, rating: 4.0, popularity: 55, family: "Boisé épicé", mood: "boise", gender: "h", shape: "deo", colors: ["#2E7D6B", "#B6E3D4"],
+  { id: 21, onRequest: true, brand: "La Rive", name: "Cabana Déodorant", category: "deodorant", volume: "150 ml", price: 35, oldPrice: 45, rating: 4.0, popularity: 55, family: "Boisé épicé", mood: "boise", gender: "h", shape: "deo", colors: ["#2E7D6B", "#B6E3D4"],
     notes: { top: "Cardamome, Cannelle", heart: "Clou de girofle, Eucalyptus, Lavande", base: "Mousse, Vanille" } },
-  { id: 27, brand: "Armaf", name: "Club de Nuit Woman Body Spray", category: "deodorant", volume: "200 ml", price: 85, rating: 4.6, popularity: 76, family: "Floral fruité", mood: "floral", gender: "f", shape: "deo", colors: ["#7A1F3D", "#E8A0B4"],
+  { id: 27, onRequest: true, brand: "Armaf", name: "Club de Nuit Woman Body Spray", category: "deodorant", volume: "200 ml", price: 85, rating: 4.6, popularity: 76, family: "Floral fruité", mood: "floral", gender: "f", shape: "deo", colors: ["#7A1F3D", "#E8A0B4"],
     notes: { top: "Bergamote, Pamplemousse, Pêche, Orange", heart: "Géranium, Jasmin, Litchi, Rose", base: "Musc, Patchouli, Vanille, Vétiver" } },
-  { id: 28, brand: "La Rive", name: "Brave Man Déodorant", category: "deodorant", volume: "150 ml", price: 45, rating: 4.2, popularity: 61, family: "Aquatique boisé", mood: "frais", gender: "h", shape: "deo", colors: ["#123A5C", "#7FB2D9"],
+  { id: 28, onRequest: true, brand: "La Rive", name: "Brave Man Déodorant", category: "deodorant", volume: "150 ml", price: 45, rating: 4.2, popularity: 61, family: "Aquatique boisé", mood: "frais", gender: "h", shape: "deo", colors: ["#123A5C", "#7FB2D9"],
     notes: { top: "Accords marins, Pamplemousse", heart: "Laurier, Jasmin sambac", base: "Patchouli, Ambre gris, Bois de gaïac, Mousse de chêne" } },
-  { id: 22, brand: "Lattafa", name: "Yara", category: "parfum", volume: "100 ml EDP", price: 320, rating: 4.9, popularity: 97, family: "Gourmand poudré", mood: "gourmand", gender: "f", shape: "round", colors: ["#E78FA8", "#FBD3DE"], bestseller: true,
+  { id: 22, onRequest: true, brand: "Lattafa", name: "Yara", category: "parfum", volume: "100 ml EDP", price: 320, rating: 4.9, popularity: 97, family: "Gourmand poudré", mood: "gourmand", gender: "f", shape: "round", colors: ["#E78FA8", "#FBD3DE"], bestseller: true,
     notes: { top: "Orchidée, Héliotrope, Mandarine", heart: "Accord gourmand, Fruits tropicaux", base: "Vanille, Musc, Santal" } },
-  { id: 23, brand: "Armaf", name: "Club de Nuit Woman", category: "parfum", volume: "105 ml EDP", price: 450, rating: 4.6, popularity: 82, family: "Floral fruité", mood: "floral", gender: "f", shape: "tall", colors: ["#7A1F3D", "#E8A0B4"],
+  { id: 23, brand: "Armaf", name: "Club de Nuit Woman", category: "parfum", volume: "105 ml EDP", price: 350, rating: 4.6, popularity: 82, family: "Floral fruité", mood: "floral", gender: "f", shape: "tall", colors: ["#7A1F3D", "#E8A0B4"],
     notes: { top: "Bergamote, Orange, Pamplemousse", heart: "Rose, Jasmin, Pêche", base: "Patchouli, Vanille, Musc" } },
-  { id: 24, brand: "Alhambra", name: "Delilah", category: "parfum", volume: "100 ml EDP", price: 280, oldPrice: 330, rating: 4.5, popularity: 79, family: "Floral poudré", mood: "floral", gender: "f", shape: "round", colors: ["#D9A3B8", "#FFF0F4"],
+  { id: 24, brand: "Alhambra", name: "Delilah", category: "parfum", volume: "100 ml EDP", price: 140, rating: 4.5, popularity: 79, family: "Floral poudré", mood: "floral", gender: "f", shape: "round", colors: ["#D9A3B8", "#FFF0F4"],
     notes: { top: "Bergamote, Litchi, Rhubarbe", heart: "Pivoine, Lys sauvage, Rose", base: "Vanille, Musc blanc, Cachemire" } },
-  { id: 25, brand: "Rasasi", name: "Hawas for Her", category: "parfum", volume: "100 ml EDP", price: 620, rating: 4.6, popularity: 74, family: "Fruité floral", mood: "floral", gender: "f", shape: "classic", colors: ["#C2185B", "#F8BBD0"],
+  { id: 25, onRequest: true, brand: "Rasasi", name: "Hawas for Her", category: "parfum", volume: "100 ml EDP", price: 620, rating: 4.6, popularity: 74, family: "Fruité floral", mood: "floral", gender: "f", shape: "classic", colors: ["#C2185B", "#F8BBD0"],
     notes: { top: "Poire, Pomme, Bergamote", heart: "Fleur d'oranger, Jasmin", base: "Ambre, Musc, Vanille" } },
-  { id: 26, brand: "Zimaya", name: "Fatima", category: "parfum", volume: "100 ml EDP", price: 350, rating: 4.4, popularity: 68, family: "Oriental floral", mood: "boise", gender: "f", shape: "square", colors: ["#5B1A3A", "#D4AF37"],
+  { id: 26, brand: "Zimaya", name: "Fatima", category: "parfum", volume: "100 ml EDP", price: 250, rating: 4.4, popularity: 68, family: "Oriental floral", mood: "boise", gender: "f", shape: "square", colors: ["#5B1A3A", "#D4AF37"],
     notes: { top: "Safran, Framboise", heart: "Rose, Oud", base: "Ambre, Musc, Vanille" } },
 ];
 
@@ -191,8 +191,11 @@ export const flushPendingSection = () => {
 };
 export const searchable = (p) => `${p.brand} ${p.name} ${p.inspiration || ""} ${p.family} ${Object.values(p.notes).join(" ")}`.toLowerCase();
 export const discountOf = (p) => (p.oldPrice ? Math.round((1 - p.price / p.oldPrice) * 100) : 0);
+export const orderLabel = (p) => (p.onRequest ? "Commander sur demande" : "Commander");
 export const quickOrderLink = (p) =>
-  waLink(`Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite commander :\n• ${p.brand} ${p.name} (${p.volume}) — ${fmt(p.price)}\n\nMerci de me confirmer la disponibilité.`);
+  waLink(p.onRequest
+    ? `Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite commander sur demande (produit « Sur commande ») :\n• ${p.brand} ${p.name} (${p.volume}) — ${fmt(p.price)}\n\nMerci de me confirmer la disponibilité et le délai.`
+    : `Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite commander :\n• ${p.brand} ${p.name} (${p.volume}) — ${fmt(p.price)}\n\nMerci de me confirmer la disponibilité.`);
 
 /* Panier : état + totaux. */
 export function useCart() {
@@ -221,7 +224,7 @@ export function useCart() {
 }
 
 export function buildOrderMessage({ items, subtotal, shipping, total }, form) {
-  const lines = items.map((i) => `• ${i.qty} × ${i.brand} ${i.name} (${i.volume}) — ${fmt(i.price * i.qty)}`).join("\n");
+  const lines = items.map((i) => `• ${i.qty} × ${i.brand} ${i.name} (${i.volume}) — ${fmt(i.price * i.qty)}${i.onRequest ? " [sur commande]" : ""}`).join("\n");
   return (
     `Bonjour Rosa Parc Parfumerie 🌸\nJe souhaite passer la commande suivante :\n\n${lines}\n\n` +
     `Sous-total : ${fmt(subtotal)}\nLivraison : ${shipping ? fmt(shipping) : "Offerte"}\n*Total : ${fmt(total)}*\n\n` +
