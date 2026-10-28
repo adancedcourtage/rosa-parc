@@ -9,7 +9,7 @@ import {
   fmt, waLink, orderLabel, scrollToId, searchable, discountOf, quickOrderLink, useCart, buildOrderMessage,
   Bottle, ProductVisual, photoOf, WhatsAppIcon, BaseStyles, GENDER_PAGES, GENDER_LABEL, SITE_NAV, HOURS, CONTACT_SUBJECTS, DELIVERY_CITIES,
   useHashRoute, goTo, useGenderProducts, useContactForm, flushPendingSection,
-  productRoute, productIdFromRoute, profileOf, describeProduct, relatedTo, hasNotes,
+  productRoute, productIdFromRoute, stockFirst, profileOf, describeProduct, relatedTo, hasNotes,
 } from "./shared.jsx";
 import {
   ScrollProgress, Reveal, SplitWords, CountUp, Magnetic, useSpotlight, useFlyToCart, BackToTop, SearchOverlay, useSearchShortcut, pushRecent, useRecent,
@@ -135,7 +135,7 @@ function HeroBento({ onQuiz, onNav, onAdd }) {
   const star = PRODUCTS.find((p) => p.id === 4);
   const deo = PRODUCTS.find((p) => p.id === 14);
   const deoFrom = Math.min(...PRODUCTS.filter((p) => p.category === "deodorant").map((p) => p.price));
-  const offers = PRODUCTS.filter((p) => p.oldPrice).sort((a, b) => b.popularity - a.popularity);
+  const offers = PRODUCTS.filter((p) => p.oldPrice).sort(stockFirst((a, b) => b.popularity - a.popularity));
   const maxDiscount = Math.max(0, ...offers.map(discountOf));
   const spot = useSpotlight();
   return (
@@ -308,7 +308,7 @@ function Quiz({ open, onClose, onAdd }) {
       if (p.mood === answers.mood) s += 3;
       if (p.price <= +answers.budget) s += 2;
       return { p, s: s + p.popularity / 100 };
-    }).sort((a, b) => b.s - a.s).slice(0, 3).map((r) => r.p);
+    }).sort((a, b) => (a.p.onRequest ? 1 : 0) - (b.p.onRequest ? 1 : 0) || b.s - a.s).slice(0, 3).map((r) => r.p);
   }, [step, answers]);
 
   const choose = (key, val) => { setAnswers({ ...answers, [key]: val }); setDir(1); setStep(step + 1); };
@@ -795,7 +795,7 @@ function Footer({ onNav }) {
 function GenderPage({ pageKey, onAdd, onQuiz }) {
   const cfg = GENDER_PAGES[pageKey];
   const g = useGenderProducts(cfg.gender);
-  const top = [...g.base].filter((p) => p.category === "parfum").sort((a, b) => b.popularity - a.popularity).slice(0, 2);
+  const top = [...g.base].filter((p) => p.category === "parfum").sort(stockFirst((a, b) => b.popularity - a.popularity)).slice(0, 2);
   const tint = { h: "from-[#E9E4F2] via-[#FDF8F7] to-[#F4E3E2]", f: "from-[#FCE4EC] via-[#FDF8F7] to-[#F4E3E2]", m: "from-[#F3D98B]/40 via-[#FDF8F7] to-[#F4E3E2]" }[cfg.gender];
   const chip = (active) => `shrink-0 rounded-full border px-4 py-2 text-sm transition ${active ? "border-[#2A1625] bg-[#2A1625] text-white" : "border-[#E8C5C8] bg-white text-[#2A1625] hover:border-[#C59B27]"}`;
 

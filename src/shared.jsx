@@ -165,12 +165,13 @@ const withMoroccanPrice = (p) => {
 };
 export const PRODUCTS = [...CORE_PRODUCTS, ...IMPORTED].map(withMoroccanPrice);
 
+/* Produits en stock toujours avant les produits « Sur commande », quel que soit le tri choisi. */
+export const stockFirst = (fn) => (a, b) => (a.onRequest ? 1 : 0) - (b.onRequest ? 1 : 0) || fn(a, b);
 export const SORTS = [
   { id: "popularity", label: "Popularité", fn: (a, b) => b.popularity - a.popularity },
   { id: "price-asc", label: "Prix croissant", fn: (a, b) => a.price - b.price },
   { id: "price-desc", label: "Prix décroissant", fn: (a, b) => b.price - a.price },
-  { id: "rating", label: "Mieux notés", fn: (a, b) => (b.rating || 0) - (a.rating || 0) || b.popularity - a.popularity },
-];
+  { id: "rating", label: "Mieux notés", fn: (a, b) => (b.rating || 0) - (a.rating || 0) || b.popularity - a.popularity },].map((s) => ({ ...s, fn: stockFirst(s.fn) }));
 
 export const fmt = (n) => `${n.toLocaleString("fr-FR")} DH`;
 export const waLink = (text) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
@@ -395,7 +396,7 @@ export const relatedTo = (p, n = 4) =>
       x,
       s: (x.mood && x.mood === p.mood ? 2 : 0) + (x.gender === p.gender || x.gender === "m" ? 1 : 0) + (x.category === p.category ? 1 : 0) + x.popularity / 1000,
     }))
-    .sort((a, b) => b.s - a.s)
+    .sort((a, b) => (a.x.onRequest ? 1 : 0) - (b.x.onRequest ? 1 : 0) || b.s - a.s)
     .slice(0, n)
     .map((r) => r.x);
 
