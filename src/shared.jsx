@@ -393,7 +393,7 @@ export const relatedTo = (p, n = 4) =>
   PRODUCTS.filter((x) => x.id !== p.id)
     .map((x) => ({
       x,
-      s: (x.mood === p.mood ? 2 : 0) + (x.gender === p.gender || x.gender === "m" ? 1 : 0) + (x.category === p.category ? 1 : 0) + x.popularity / 1000,
+      s: (x.mood && x.mood === p.mood ? 2 : 0) + (x.gender === p.gender || x.gender === "m" ? 1 : 0) + (x.category === p.category ? 1 : 0) + x.popularity / 1000,
     }))
     .sort((a, b) => b.s - a.s)
     .slice(0, n)
