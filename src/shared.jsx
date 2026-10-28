@@ -80,7 +80,7 @@ export const CORE_PRODUCTS = [
     notes: { top: "Bergamote, Litchi, Rhubarbe", heart: "Pivoine, Lys sauvage, Rose", base: "Vanille, Musc blanc, Cachemire" } },
   { id: 25, onRequest: true, brand: "Rasasi", name: "Hawas for Her", category: "parfum", volume: "100 ml EDP", price: 620, rating: 4.6, popularity: 74, family: "Fruité floral", mood: "floral", gender: "f", shape: "classic", colors: ["#C2185B", "#F8BBD0"],
     notes: { top: "Poire, Pomme, Bergamote", heart: "Fleur d'oranger, Jasmin", base: "Ambre, Musc, Vanille" } },
-  { id: 26, brand: "Zimaya", name: "Fatima", category: "parfum", volume: "100 ml EDP", price: 250, rating: 4.4, popularity: 68, family: "Oriental floral", mood: "boise", gender: "f", shape: "square", colors: ["#5B1A3A", "#D4AF37"],
+  { id: 26, onRequest: true, brand: "Zimaya", name: "Fatima", category: "parfum", volume: "100 ml EDP", price: 350, rating: 4.4, popularity: 68, family: "Oriental floral", mood: "boise", gender: "f", shape: "square", colors: ["#5B1A3A", "#D4AF37"],
     notes: { top: "Safran, Framboise", heart: "Rose, Oud", base: "Ambre, Musc, Vanille" } },
 ];
 
