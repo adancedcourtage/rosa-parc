@@ -80,7 +80,7 @@ export const CORE_PRODUCTS = [
     notes: { top: "Bergamote, Litchi, Rhubarbe", heart: "Pivoine, Lys sauvage, Rose", base: "Vanille, Musc blanc, Cachemire" } },
   { id: 25, onRequest: true, brand: "Rasasi", name: "Hawas for Her", category: "parfum", volume: "100 ml EDP", price: 620, rating: 4.6, popularity: 74, family: "Fruité floral", mood: "floral", gender: "f", shape: "classic", colors: ["#C2185B", "#F8BBD0"],
     notes: { top: "Poire, Pomme, Bergamote", heart: "Fleur d'oranger, Jasmin", base: "Ambre, Musc, Vanille" } },
-  { id: 26, onRequest: true, brand: "Zimaya", name: "Fatima", category: "parfum", volume: "100 ml EDP", price: 350, rating: 4.4, popularity: 68, family: "Oriental floral", mood: "boise", gender: "f", shape: "square", colors: ["#5B1A3A", "#D4AF37"],
+  { id: 26, brand: "Zimaya", name: "Fatima", category: "parfum", volume: "100 ml EDP", price: 250, rating: 4.4, popularity: 68, family: "Oriental floral", mood: "boise", gender: "f", shape: "square", colors: ["#5B1A3A", "#D4AF37"],
     notes: { top: "Safran, Framboise", heart: "Rose, Oud", base: "Ambre, Musc, Vanille" } },
 ];
 
@@ -368,6 +368,8 @@ export const MOOD_PROFILE = {
 };
 export const profileOf = (p) => {
   const base = MOOD_PROFILE[p.mood];
+  // Fiches minimales (liste du propriétaire) : pas d'ambiance connue, pas de profil affiché.
+  if (!base) return null;
   return p.category === "deodorant" ? { ...base, sillage: 2, tenue: 2 } : base;
 };
 
@@ -376,7 +378,7 @@ export const hasNotes = (p) => !!(p.notes && (p.notes.top || p.notes.heart || p.
 export const describeProduct = (p) => {
   const kind = p.category === "parfum" ? "un parfum" : "un déodorant";
   const lc = (t) => t.toLowerCase();
-  const intro = `${p.brand} ${p.name} est ${kind} ${FOR_GENDER[p.gender]} de la famille ${lc(p.family)}` +
+  const intro = `${p.brand} ${p.name} est ${kind} ${FOR_GENDER[p.gender]}${p.family ? ` de la famille ${lc(p.family)}` : ""}` +
     (p.inspiration ? `, inspiré de ${p.inspiration}.` : ".");
   if (!hasNotes(p)) return `${intro} La marque ne publie pas sa pyramide olfactive détaillée : demandez-nous conseil sur WhatsApp.`;
   const parts = [];

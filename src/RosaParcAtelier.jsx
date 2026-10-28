@@ -1104,7 +1104,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
           <h2 className="font-display mt-2 text-4xl">Comment il évolue sur la peau</h2>
           {!hasNotes(p) && (
             <div className="mt-6 rounded-2xl bg-white/10 p-5 text-sm leading-relaxed text-white/80">
-              La marque ne publie pas la pyramide détaillée de ce {p.category === "parfum" ? "parfum" : "déodorant"}. Famille : <b className="text-[#F3D98B]">{p.family}</b>.
+              La marque ne publie pas la pyramide détaillée de ce {p.category === "parfum" ? "parfum" : "déodorant"}. {p.family && <>Famille : <b className="text-[#F3D98B]">{p.family}</b>.</>}
               <a href={waLink(`Bonjour, pouvez-vous me décrire ${p.brand} ${p.name} ? 🌸`)} target="_blank" rel="noreferrer" className="mt-4 flex w-fit items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-xs font-semibold text-white">
                 <WhatsAppIcon className="h-4 w-4" /> Demander les notes
               </a>
@@ -1122,7 +1122,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
             ))}
           </div>
         </Tile>
-        <Tile delay={0.1} className="bg-white p-6 ring-1 ring-[#E8C5C8] sm:p-8">
+        {profile && <Tile delay={0.1} className="bg-white p-6 ring-1 ring-[#E8C5C8] sm:p-8">
           <p className="text-[10px] uppercase tracking-[.35em] text-[#C59B27]">Profil</p>
           <h2 className="font-display mt-2 text-3xl text-[#2A1625]">{MOODS[p.mood]}</h2>
           <div className="mt-6 space-y-4">
@@ -1133,7 +1133,7 @@ function ProductPage({ id, onAdd, onOpenCart, cartCount }) {
           <div className="flex flex-wrap gap-1.5">{profile.seasons.map((x) => <span key={x} className="rounded-full bg-[#F4E3E2] px-3 py-1 text-xs text-[#2A1625]">{x}</span>)}</div>
           <p className="mb-2 mt-4 text-xs font-semibold text-[#2A1625]/70">Moments</p>
           <div className="flex flex-wrap gap-1.5">{profile.moments.map((x) => <span key={x} className="rounded-full bg-[#FDF8F7] px-3 py-1 text-xs text-[#2A1625] ring-1 ring-[#E8C5C8]">{x}</span>)}</div>
-        </Tile>
+        </Tile>}
       </section>
 
       <section className="mx-auto mt-4 max-w-7xl px-4 sm:px-6">
