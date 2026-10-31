@@ -1131,7 +1131,7 @@ function Footer({ onNav }) {
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white"><Instagram className="h-5 w-5" /></span>
                 <span className="text-sm"><span className="block text-xs text-white/50">Instagram</span>@rosaparcparfumerie</span>
               </a>
-              <a href="tel:+212784884694" className="flex items-center gap-2 pl-1 text-sm text-white/60 hover:text-white"><Phone className="h-4 w-4" /> 07 84 88 46 94</a>
+              <a href="tel:+212614242162" className="flex items-center gap-2 pl-1 text-sm text-white/60 hover:text-white"><Phone className="h-4 w-4" /> 06 14 24 21 62</a>
             </div>
           </div>
         </div>
@@ -1292,7 +1292,7 @@ function ContactPage() {
   const input = "w-full rounded-2xl border bg-white px-4 py-3 text-base outline-none transition focus:ring-4 focus:ring-[#D4AF37]/25 sm:text-sm";
   const cards = [
     { icon: WhatsAppIcon, label: "WhatsApp", value: WHATSAPP_DISPLAY, href: waLink("Bonjour Rosa Parc Parfumerie 🌸"), color: "bg-[#25D366]" },
-    { icon: Phone, label: "Téléphone", value: "07 84 88 46 94", href: "tel:+212784884694", color: "bg-[#2A1625]" },
+    { icon: Phone, label: "Téléphone", value: "06 14 24 21 62", href: "tel:+212614242162", color: "bg-[#2A1625]" },
     { icon: Instagram, label: "Instagram", value: "@rosaparcparfumerie", href: INSTAGRAM_URL, color: "bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF]" },
   ];
 
