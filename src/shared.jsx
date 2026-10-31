@@ -4,8 +4,8 @@ import PRICES_MA from "./data/prix-maroc.json";
 
 /* Données et utilitaires partagés par les maquettes 2 et 3. */
 
-export const WHATSAPP_NUMBER = "212784884694";
-export const WHATSAPP_DISPLAY = "+212 7 84 88 46 94";
+export const WHATSAPP_NUMBER = "212614242162";
+export const WHATSAPP_DISPLAY = "+212 6 14 24 21 62";
 export const INSTAGRAM_URL = "https://instagram.com/rosaparcparfumerie";
 export const FREE_SHIPPING_FROM = 500;
 export const SHIPPING_FEE = 35;

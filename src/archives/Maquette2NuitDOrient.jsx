@@ -721,7 +721,7 @@ function ContactPage() {
   const line = (err) => `w-full border-b bg-transparent py-3 text-base text-white outline-none placeholder:text-white/30 sm:text-sm ${err ? "border-red-400" : "border-white/15 focus:border-[#D4AF37]"}`;
   const links = [
     [WhatsAppIcon, "WhatsApp", WHATSAPP_DISPLAY, waLink("Bonjour Rosa Parc Parfumerie 🌸")],
-    [Phone, "Téléphone", "07 84 88 46 94", "tel:+212784884694"],
+    [Phone, "Téléphone", "06 14 24 21 62", "tel:+212614242162"],
     [Instagram, "Instagram", "@rosaparcparfumerie", INSTAGRAM_URL],
   ];
   return (

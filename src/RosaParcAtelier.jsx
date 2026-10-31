@@ -71,7 +71,7 @@ function Nav({ count, onCart, onNav, onSearch, route }) {
         </button>
         <div className="flex flex-1 items-center justify-end gap-2">
           <a href={waLink("Bonjour Rosa Parc Parfumerie 🌸")} target="_blank" rel="noreferrer" className="hidden items-center gap-2 rounded-full border border-[#2A1625]/15 px-4 py-2 text-sm text-[#2A1625] transition hover:border-[#25D366] sm:inline-flex">
-            <WhatsAppIcon className="h-4 w-4 text-[#25D366]" /> 07 84 88 46 94
+            <WhatsAppIcon className="h-4 w-4 text-[#25D366]" /> 06 14 24 21 62
           </a>
           <motion.button whileHover={{ scale: 1.06 }} whileTap={{ scale: 0.92 }} onClick={onSearch} className="grid h-10 w-10 place-items-center rounded-full text-[#2A1625] transition-colors hover:bg-[#F4E3E2]" aria-label="Rechercher (⌘K)">
             <Search className="h-5 w-5" />
@@ -915,9 +915,9 @@ function ContactPage() {
           </a>
         </Tile>
         <Tile delay={0.25} className="bg-[#2A1625] p-0 text-white">
-          <a href="tel:+212784884694" className="flex h-full flex-col justify-between gap-6 p-5">
+          <a href="tel:+212614242162" className="flex h-full flex-col justify-between gap-6 p-5">
             <Phone className="h-6 w-6 text-[#F3D98B]" />
-            <div><p className="text-xs opacity-70">Téléphone</p><p className="font-display text-2xl">07 84 88 46 94</p></div>
+            <div><p className="text-xs opacity-70">Téléphone</p><p className="font-display text-2xl">06 14 24 21 62</p></div>
           </a>
         </Tile>
         <Tile delay={0.3} className="bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] p-0 text-white">
